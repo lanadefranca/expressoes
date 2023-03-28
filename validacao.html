@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expressões Regulares</title>
+    <style>
+        .certo
+        {
+            background-color: lightgreen;
+        }
+        .errado
+        {
+            background-color: lightcoral;
+        }
+    </style>
+
+</head>
+<body>
+
+    Digite seu CEP
+    <input maxlength="9" type="text" id="cep" onkeyup="ValidarCEP();">
+    <br> <br>
+    Digite seu Telefone
+    <input type="text" placeholder= "insira seu telefone" id="telefone" onkeyup="ValidarTelefone();">
+
+</body>
+
+<script>
+    function ValidarCEP()
+    {
+       //ACESSE O SITE regex101.com
+        expressao = /[0-9]{5}-[0-9]{3}/g;    
+        texto = cep.value;
+        resposta = expressao.test(texto);
+       
+        if (resposta==true) 
+        {
+            cep.classList.remove('errado');
+            cep.classList.add('certo');
+        }
+        if (resposta==false)
+        {
+            cep.classList.remove('certo');
+            cep.classList.add('errado');
+        }
+    }
+    function ValidarTelefone()
+    {
+       //ACESSE O SITE regex101.com
+        expressao = /\([0-9]{2}\) 9 [0-9]{4}-[0-9]{4}$/g;    
+        texto = telefone.value;
+        resposta = expressao.test(texto);
+       
+        if (resposta==true) 
+        {
+            telefone.classList.remove('errado');
+            telefone.classList.add('certo');
+        }
+        if (resposta==false)
+        {
+            telefone.classList.remove('certo');
+            telefone.classList.add('errado');
+        }
+    }
+</script>
+</html>
